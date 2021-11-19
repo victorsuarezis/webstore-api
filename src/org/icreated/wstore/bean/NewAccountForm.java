@@ -13,13 +13,36 @@
  ******************************************************************************/
 package org.icreated.wstore.bean;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class NewAccountForm {
 	
-    private String name;
-	private String email;
-	private String password;
+	@JsonProperty("name")
+    String name;
+	@JsonProperty("email")
+	String email;
+	@JsonProperty("password")
+	String password;
 	
+	/**
+	 * 
+	 */
+	public NewAccountForm() {
 
+	}
+
+	/**
+	 * @param name
+	 * @param email
+	 * @param password
+	 */
+	public NewAccountForm(String name, String email, String password) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.password = password;
+	}
+	
 	public String getName() {
 		return name;
 	}

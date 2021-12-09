@@ -48,7 +48,7 @@ public class CatalogService extends AService {
 		 
 			String sql = "SELECT t.M_Product_Category_ID, t.Name, t.Description " +
 			"FROM M_Product_Category t " +
-			"WHERE t.AD_Org_ID= ?  AND t.IsActive='Y' AND t.IsSelfService='Y' " +
+			"WHERE t.AD_Client_ID = ? AND t.AD_Org_ID= ?  AND t.IsActive='Y' AND t.IsSelfService='Y' " +
 			"ORDER BY t.Name";
 
 			PreparedStatement pstmt = null;
@@ -56,7 +56,8 @@ public class CatalogService extends AService {
 			try
 			{
 				pstmt = DB.prepareStatement (sql, null);
-				pstmt.setInt (1, Env.getAD_Org_ID(ctx));
+				pstmt.setInt (1, Env.getAD_Client_ID(ctx));
+				pstmt.setInt (2, Env.getAD_Org_ID(ctx));
 				
 				rs = pstmt.executeQuery ();
 
